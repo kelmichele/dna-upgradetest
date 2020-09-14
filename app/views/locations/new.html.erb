@@ -1,0 +1,18 @@
+<% @page_title = "Create a New Location" %>
+
+<%= tag.div class: 'full' do %>
+	<%= tag.div class: 'wrap' do %>
+		<%= tag.h1 @page_title %>
+		<%= render 'form' %>
+
+		<%= tag.div class: 'location-import' do %>
+			<%= tag.h4 "Import Locations", class: 'tmargin0 bmargin5' %>
+			<%= form_tag import_locations_path, multipart: true do %>
+			  <%= file_field_tag :file, class: 'bmargin5' %>
+			  <%= tag.div class: 'clearfix' %>
+			  <%= submit_tag "Import" %>
+			<% end %>
+		<% end %>
+
+	<% end %>
+<% end %>

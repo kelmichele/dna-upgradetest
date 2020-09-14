@@ -1,0 +1,74 @@
+<% @page_title = "Our Locations" %>
+
+<!-- <div class="full">
+	<div class="wrap location-map">
+		<%= tag.h1 @page_title %>
+		<hr class="title-line">
+		<div class="clearfix"></div>
+		<%= render 'shared/dna-text' %>
+		<br><hr><br>
+
+		<%= tag.div class: 'col-md-5' do %>
+			<%= render 'shared/search_btn' %>
+		<% end %>
+
+		<%= tag.div class: 'col-md-5 col-md-offset-1' do %>
+			<%= render 'shared/add_btns' %>
+		<% end %>
+
+		<div class="clearfix"></div>
+		<br><hr><br>
+	</div>
+</div> -->
+
+<div class="full pop">
+	<div class="one">
+		<h1>Location Search Results</h1>
+		<p>Get DNA Tested Today offers DNA &amp; Paternity testing options that are non-invasive, affordable, and 99.99% accurate. Your privacy is our guarantee.<br>
+		For more information, call us toll free at: <%= phone %>.
+			Click Here to schedule your testing appointment today!</p>
+			<% if user_signed_in? && current_user.admin? %>
+				<p>
+				  Download:
+				  <%= link_to "CSV", locations_path(format: "csv") %> |
+				  <%= link_to "Excel", locations_path(format: "xls") %>
+				</p>
+			<% end %>
+	</div>
+
+
+	<div class="location-map">
+		<div class="map-hlf">
+			<%= render 'shared/map' %>
+		</div>
+
+		<div class="town-hlf">
+			<div class="search-sec">
+				<div class="searcher">
+					<%= form_with(url: locations_path, class: "form-inline", local: true, method: :get) do |f| %>
+					  <%= f.text_field :near, class: "form-control", placeholder: "Search" %>
+					  <%= f.submit "", class: "btn btn-outline-secondary search" %>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="loclist">
+				<table>
+				<% @locations.each do |location| %>
+					<div class="townlisting-bx">
+						<h4>
+							<!-- <%= simple_format(location.full_address)%>-->
+							<%= location.street.titleize %><br>
+							<% if location.addr2 %><%= location.addr2.titleize %><br><% end %>
+							<%= location.town.townname %>, <%= location.state.abv %> <%= location.zip %>
+						</h4>
+						<% if user_signed_in? && current_user.admin? %>
+							<% if location.longitude == nil %>**<small>Coordinates Missing**</small><% end %>
+							<div class="actions"><small><%= link_to("Edit Location (#{location.id})", edit_location_path(location)) %></small></div>
+						<% end %>
+					</div>
+				<% end %>
+				</table>
+			</div>
+	</div>
+</div>

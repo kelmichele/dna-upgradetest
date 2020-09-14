@@ -1,0 +1,25 @@
+<%= render 'shared/errors', obj: @town %>
+
+<div class="state-form">
+  <%= form_for(@town, :html => {class: "form-horizontal", role: "form" }) do |f| %>
+    <div class="form-group">
+      <div class="control-label col-md-2">
+        <%= f.label :name %>
+      </div>
+
+      <div class="col-md-5">
+        <%= f.text_field :townname, class: "form-control", placeholder: "Enter City", autofocus: true %>
+      </div>
+
+      <div class="col-md-5">
+        <%= f.collection_select(:state_id, State.all, :id, :name) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <%= f.submit(@town.new_record? ? "Add City" : "Update City", class: "btn btn-primary") %>
+      </div>
+    </div>
+  <% end %>
+</div>

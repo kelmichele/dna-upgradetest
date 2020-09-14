@@ -1,0 +1,117 @@
+<% @page_title = "Chatrooms" %>
+
+<div class="full">
+  <div class="wrap">
+
+    <div class="col-md-4 col-md-offset-2">
+      <div class="panel panel-primary">
+        <div class="panel-heading launch-click">
+          <div class="panel-title text-center">
+            <div class="vis-panel">
+              <%= image_tag('chat.png', class:'chat-icon', style: 'width: 45px') %>
+              &nbsp;
+              <%= admin_online_status boss_admin %>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-body" style="display:none">
+            <div class="col-md-5"><%= link_to 'Log In', new_user_session_path, class: 'btn btn-default' %></div>
+            <div class="col-md-5"><%= link_to "Continue as Guest", guest_users_path, class: 'btn btn-default', method: :post %></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+  <div class="wrap" style="height:290px;">
+    <div class="col-md-8">
+      <h3>Chatrooms: <b><%= Chatroom.all.count %></b></h3>
+      <h3>Messages: <b><%= Note.all.count %></b></h3>
+      <h3>Users: <b><%= User.all.count %></b></h3>
+      <hr>
+
+
+      <p>Open Chats: <b><%= open_line.count %></b></p>
+      <p>Closed Chats: <b><%= closed_line.count %></b></p>
+
+      <p>Active Users: <b><%= active_users.count %></b></p>
+      <p>Fading Users: <b><%= fading_users.count %></b></p>
+
+      <hr><br>
+      <!-- <ul>
+        <% open_line.each do |chatroom| %>
+          <p>id: <%= chatroom.id %><br>
+          notes: <%= chatroom.notes.count %><br>
+
+          sender: <%= chatroom.sender.id %><br>
+          recipient: <%= chatroom.recipient.id %><br>
+          created: <%= chatroom.created_at.to_date() %><br>
+          </p>
+          <hr>
+        <% end %>
+      </ul>
+ -->
+    </div>
+
+    <div class="col-md-3 text-center">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">User list</h3>
+        </div>
+
+        <div class="panel-body">
+          <ul>
+            <% active_users.each do |user| %>
+              <% if user.notes.count == 0 %>
+                <li><%= link_to user.name, chatrooms_path(user_id: user), remote: true, method: :post %>
+                  <b><br><%= user.id %></b>
+                  <br><%= user.created_at.to_date() %>
+                  <br><%= user.chatrooms.count %> &nbsp; | &nbsp; <%= user.chatrooms.count %>
+                </li>
+                <br>
+              <% else %>
+                <li><%= link_to user.name, chatrooms_path(user_id: user), remote: true, method: :post %>
+                  <b><br><%= user.id %></b>
+                  <br><%= user.created_at.to_date() %>
+                  <br><%= user.chatrooms.count %> &nbsp; | &nbsp; <%= user.chatrooms.count %>
+                </li>
+                <br>
+              <% end %>
+            <% end %>
+
+            <hr>
+            <% fading_users.each do |user| %>
+              <li><%= link_to user.name, chatrooms_path(user_id: user), remote: true, method: :post %>
+                <b><br><%= user.id %></b>
+                <br><%= user.created_at.to_date() %>
+                <br><%= user.chatrooms.count %> &nbsp; | &nbsp; <%= user.chatrooms.count %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'chatrooms/chatbox' %>
+
+
+
+<!--
+  add percent signs, and this is the original chatbox code. all changes for testing will be made in that file. this is the reset
+  <ul id="chatrooms-list">
+  < @chatrooms.each do |chatroom| >
+    <= render 'chatrooms/chatroom', chatroom: chatroom, user: current_user >
+  < end >
+</ul> -->

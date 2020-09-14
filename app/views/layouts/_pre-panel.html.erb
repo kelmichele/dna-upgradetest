@@ -1,0 +1,17 @@
+<div class="livechat customer">
+	<div class="panel panel-primary lc">
+	  <div class="panel-heading launch-click">
+	    <div class="panel-title text-center">
+	      <div class="vis-panel">
+	        <%= image_tag('chat.png', class:'chat-icon') %>
+	        <%= admin_online_status boss_admin %>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="panel-body">
+			<%= link_to 'Log In', new_user_session_path, class: 'lc-btns login' %>
+			<%= link_to "Continue as Guest", guest_users_path, class: 'lc-btns guser', method: :post %>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,175 @@
+@import "mixins";
+@import "variables";
+
+.admin-bar {
+	@include sec-default(); background-color: black;
+	text-align: center;
+	p, h4{color: white; font-weight: bold; margin-bottom: 0;}
+	a {color: $blue;}
+
+	.avail, .admenu {display: inline-block; padding-top:8px;
+	 	// padding: 10px 20px;
+	}
+	.avail {width: 45%; float: left; margin-top: 7px; color:white;}
+
+	i {background-color: white; color: black; font-size: 20px;
+		width: 45px; height: 35px; padding-top: 7px;
+		@include center-block(); position: relative;
+	}
+
+
+	#chatrooms-menu {
+	  font-size: 20px;
+	  height: 50px;
+	  line-height: 50px;
+
+	  p {font-weight: normal; color: black; text-align: center; font-size: 15px;}
+
+	  ul {
+	    margin: 0;
+	    position: relative;
+	    top: 8px;
+	    right: 200px;
+	    border-radius: 0 0 5px 5px;
+	    height: 300px;
+	    overflow: scroll;
+	    overflow-x: hidden;
+	    padding-top: 15px;
+	    min-width: 200px;
+	    li { margin-bottom: 15px;
+	      a {
+	        width: 100%;
+	      	color: $blue !important;
+	      }
+	    }
+	  }
+	  // .unseen-conv {
+	  //   a {
+	  //     background: $f7;
+	  //     color: black !important;
+	  //   }
+	  // }
+	}
+
+	#unseen-chatrooms {
+	  visibility: hidden;
+	  padding: 1px;
+	  position: absolute;
+	  // font-size: 13px;
+	  // font-size: 1.3rem;
+	}
+
+	// #unseen-chatrooms {
+	//   right: 5px;
+	//   background: #E92F2F;
+	// }
+
+	// #chatrooms-list {
+	//   position: fixed;
+	//   bottom: 0;
+	//   right: 0;
+	//   padding: 0;
+	//   .col-sm-2 {
+	//     padding: 0;
+	//   }
+	// }
+}
+
+.site-header { @include sec-default();}
+.header-wrapper {@include sec-default();
+	.top, .full { @include sec-default();}
+
+	.top{padding:10px 0; background-color: white;}
+	.logo-block {@include sec-grid(left, 25%); padding:10px 0 5px; }
+	.call-block {@include sec-grid(right, 25%); margin-top: 20px;
+		i {display: inline-block; float: left; width:34px; height: 34px; color: $gray; font-size: 15px; border:1px solid $gray; border-radius: 50%; text-align: center; line-height: 2.2em; margin-top: 5px; margin-right: 10px;}
+		p, h4{line-height: 1em; margin: 0;}
+		p{color: $gray;font-size: 15px;}
+		h4 {color: $blue; font-weight: 600; font-size: 23px;line-height: 1.2em;}
+	}
+
+	.full {background-color: $f6; padding: 15px 0 5px;}
+	.mainu{@include sec-grid(left, 75%);}
+	.add-menu{@include sec-grid(right, 15%); padding-top:4px;}
+	.nav-link, .add-link{font-size: 16px; color: $blue; text-transform: uppercase; letter-spacing: 1px}
+	.nav-li {display: inline-block; float: left; margin: 0px 15px;
+		&:first-child {margin-left:0;}
+		&:hover .nav-link {opacity: .7;}
+
+		&.ft-only {display: none;}
+	}
+
+	.add-link{font-size: 15px;border: 1px solid rgba($blue, .5); padding:10px; border-radius: 4px;
+		&:hover {opacity: .7;}
+	}
+
+	@include bp(nn) {
+		.full{display: none;}
+		.logo-block {@include sec-grid(left, 40%); margin-left: 5%; }
+		.call-block {@include sec-grid(right, 30%);text-align: center;
+			i {display: none;}
+		}
+	}
+
+	@include bp(md) {
+		.logo-block{margin-left: 0; width: 35%;}
+	}
+
+	@include bp(md) {
+		.top{padding:0;}
+		.logo-block, .call-block, .wrap {@include sec-default(); text-align: center;}
+		.logo-block{width: 60%;@include center-block();}
+		.call-block{background-color: rgba($blue, .2); padding: 10px; margin-top:5px;
+			p{color:$dark;}
+		}
+	}
+}
+
+#nav {@include sec-default();
+  position: relative;
+  z-index: 555;
+  &.stick { position: fixed;}
+  a.site-nav__link{color: black;}
+}
+
+#nav.full {@include ease(); top:95px;
+  &.stuck { top:0;}
+}
+
+#offcanvas-toggler {
+	width: 40px; float:right; background-color:white; padding: 7px 0 5px; text-align: center; border-radius: 2px; border: 1px solid $blue; display:none;
+	z-index: 99999;
+  span {content: '';@include center-block (); display: block; margin-bottom: 4px; width: 25px; height: 3px; border-radius: 2px; background-color: $blue;}
+
+  @include bp(nn) {display: block; margin: 6px 15px;}
+}
+.offcanvas-menu .offcanvas-inner .module ul > li > a:hover{color:white; background:$blue}
+.offcanvas-menu .offcanvas-inner .module .menu .nav-child a{padding:4px 25px}
+.offcanvas-menu .menu ul li{position:relative}
+
+.close-offcanvas{position:absolute; top:15px; right:15px; z-index:1; color:white; border:2px solid #eee; border-radius:100%; width:22px; height:22px; line-height:18px; text-align:center; font-size:12px}
+.close-offcanvas:hover{background:black; color:white}
+.offcanvas-menu{width:280px; height:100%; background:darken($blue, 10%); color:white; position:fixed; top:0; opacity:0; z-index:9999; overflow-y:scroll;
+  .offcanvas-inner{padding:20px;}
+  .module{margin-top:20px;
+    ul{margin:0 -20px;
+      li { margin-bottom:15px; padding-bottom:5px; padding-left: 15px; border-bottom:1px solid rgba(white, .4);
+        a { -webkit-transition:300ms; -o-transition:300ms; transition:300ms; padding:7px 0; padding-left:0px; color: white; font-size: 15px; line-height: 1.5em;}
+        a:hover{background:transparent;}
+        &:first-child{margin-top:0}
+      }
+    }
+  }
+}
+
+.offcanvas-menu{-webkit-transition:opacity 400ms cubic-bezier(0.7,0,0.3,1),right 400ms cubic-bezier(0.7,0,0.3,1); transition:opacity 400ms cubic-bezier(0.7,0,0.3,1),right 400ms cubic-bezier(0.7,0,0.3,1)}
+.body-innerwrapper:after{right:0}
+.offcanvas-menu{right:-280px}
+.offcanvas .offcanvas-menu{right:0}
+.body-innerwrapper:after{position:absolute; top:0; width:0; height:0; background:rgba(black, 0.8); content:''; opacity:0; -webkit-transition:opacity 0.5s,width 0.1s 0.5s,height 0.1s 0.5s; transition:opacity 0.5s,width 0.1s 0.5s,height 0.1s 0.5s; z-index:999}
+.offcanvas{width:100%; height:100%; position:relative}
+.offcanvas .body-innerwrapper:after{width:100%; height:100%; opacity:1; -webkit-transition:opacity 0.5s; transition:opacity 0.5s}
+.offcanvas .offcanvas-menu{opacity:1}
+.menu .nav-child.small{font-size:inherit}
+h3.module-title{color: white;}
+.menu .nav-child.small{font-size:inherit}

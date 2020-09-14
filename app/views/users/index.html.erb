@@ -1,0 +1,31 @@
+<% @page_title = "Users" %>
+
+<div class="full">
+	<div class="wrap">
+		<h1>Users</h1>
+		<hr class="title-line">
+		<div class="clearfix"></div>
+<!--
+        <% @users.each do |user| %>
+          <% if user.notes.count == 0 && user.chatrooms.count == 0 %>
+
+						<ul>
+					    <li>
+					    	<%= user.name %><br>
+					      <b><br><%= user.id %></b>
+					      <br><%= user.created_at.to_date() %>
+					      <br><%= user.chatrooms.count %>
+				        <p><b><%= link_to "Delete This Bitch", destroy_user_session_path, method: :delete %></b></p>
+					    </li>
+					    <hr>
+						</ul>
+
+					<% end %>
+				<% end %>
+ -->
+
+		<%= link_to "View My Conversations", conversations_path, class: 'btn btn-add' %>
+
+		<ul class="users-ul"><%= render @users %></ul>
+	</div>
+</div>

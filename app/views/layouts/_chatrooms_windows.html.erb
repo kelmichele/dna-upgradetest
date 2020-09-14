@@ -1,0 +1,23 @@
+<% unless current_user.admin? %>
+	<div class="live-chat customer">
+		<%= image_tag('chat.png', class:'chat-icon') %>
+		<%= link_to chatrooms_path(user_id: boss_admin), remote: true, method: :post do %>
+			 <!-- admin_online_status boss_admin %> -->
+			 Send Us a Message
+		<% end %>
+	</div>
+<% end %>
+
+<ul id="chatrooms-list">
+	<% chatrooms_windows.each do |chatroom| %>
+	  <%= render partial: "chatrooms/chatroom",
+	             locals: { chatroom: chatroom,
+	                       user: current_user } %>
+	<% end %>
+</ul>
+
+<!-- if boss_admin.online?
+  <span class="ofc-online"><b>Online</b> - Chat with us</span>
+ else
+  <span class="ofc-offline"><b>Away</b> - Send us a message</span>
+ end-->

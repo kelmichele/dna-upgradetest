@@ -1,0 +1,5 @@
+<ul id="chatrooms-list">
+  <% @chatrooms.each do |chatroom| %>
+    <%= render 'chatrooms/chatroom', chatroom: chatroom, user: current_user %>
+  <% end %>
+</ul>

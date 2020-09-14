@@ -1,0 +1,91 @@
+<% @page_title = "Checkout" %>
+
+<div class="home-test">
+  <div class="top-sec">
+    <div class="inner">
+      <div class="left">
+        <h1>Home DNA/Paternity Test</h1>
+        <h3>99.9% Accuracy Guaranteed</h3>
+        <p class="lpad">The At-Home DNA Paternity Test Kit provides everything you need to test for paternity in the comfort and privacy of your home.</p>
+
+        <div class="pricing">
+          <%= form_tag charges_path do %>
+            <article>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+
+              <label class="amount">
+                <p><b>$179</b> for 1 child, and 1 potential father</p>
+                <p><b>$100</b> per additional recipient</p>
+                <p><span>Price includes: testing kit, shipping, and results.</span></p>
+              </label>
+            </article>
+
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="At Home DNA Test"
+            data-amount="17900"
+            data-zip-code="true"
+            data-billing-address="true"
+            data-shipping-address="true"
+            data-locale="auto"></script>
+          <% end %>
+
+          <p class="call-add">Have Questions?<br>
+            Call us at <a href="tel:18667504773" id="number_link" onclick="ga('send', 'event', 'Phone Number', 'Clicked to Call', 'Number on Website', '1');">1 (866)-750-4773</a> for more information.</p>
+        </div>
+
+
+      </div>
+
+      <div class="right">
+        <%= image_tag('test-kit-slide.jpg', class: 'img-responsive', alt: 'Get DNA Tested Today, home kit') %>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner">
+    <h3>When you receive your Home Test Kit, follow the simple steps listed below.</h3>
+    <p>Once we receive and test the samples, we will contact you with the results.</p>
+  </div>
+
+  <div class="inst">
+    <div class="inner">
+      <div class="step one">
+        <!-- <%= image_tag('preview-qt.png', class: 'icon-qt') %>  -->
+        <h4>Step 1.</h4>
+        <h4 class="lb">Label Swab Envelopes:</h4>
+        <p>The information must be filled out completely for test to be accurate.</p>
+      </div>
+
+      <div class="step two">
+        <!-- <%= image_tag('preview-qt.png', class: 'icon-qt') %>  -->
+        <h4>Step 2.</h4>
+        <h4 class="lb">Collect DNA Samples:</h4>
+        <p>Simply rub the Sterile Polyester Tipped Applicators for 30 seconds inside the cheeks of the individual being tested.</p>
+      </div>
+
+      <div class="step three">
+        <!-- <%= image_tag('preview-qt.png', class: 'icon-qt') %>  -->
+        <h4>Step 3.</h4>
+        <h4 class="lb">Place Applicator in Sample Envelope:</h4>
+        <p>Remove the applicator from mouth, and place it directly into the DNA Sample Envelope labeled for that person.</p>
+      </div>
+
+      <div class="step four">
+        <!-- <%= image_tag('preview-qt.png', class: 'icon-qt') %>  -->
+        <h4>Step 4.</h4>
+        <h4 class="lb">Mail DNA Samples:</h4>
+        <p>Detach the Business Reply Envelope portion of the kit, and place all DNA Sample Envelopes inside. Seal the envelope securely, and place in mail. </p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- <%= image_tag('baby.png', class: 'full-img', alt: 'Get DNA Tested Today, baby border image') %>  -->
+</div>

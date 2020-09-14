@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css?family=Cantarell:400,400i,700|Quicksand:400,700|Open+Sans:400,700|Source+Sans+Pro:400,700');
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+@import "font-awesome";
+
+@import "mixins";
+@import "variables";
+
+@import "uikit";
+@import "uikit-variables";
+@import "uikit-components";
+
+.uk-accordion-title {margin-bottom:0;}
+.uk-accordion>:nth-child(n+2) {margin-top: 0;}
+
+
+.tmargin0 { margin-top: 0; }
+.bmargin0 { margin-bottom: 0; }
+.bmargin5 { margin-bottom: 5px; }
+.pleft0 { padding-left: 0px; }
+.pright0 { padding-right: 0px; }
+.bpadding0 { padding-bottom: 0; }
+.ptop0 { padding-top: 0px; }
+.f-right {float: right;}
+
+p, h5, h4, h3, h2, h1, a, li {font-family: $quick; line-height: 1.4em; color: $dark;
+  &.wide {letter-spacing: 1.5px;}
+  &.upper {text-transform: uppercase;}
+  &.white {color: white;}
+  &.black {color: black;}
+  &.dark {color: $dark;}
+  &.blue {color: $blue;}
+  &.cant {font-family: $cant;}
+
+}
+h3, h2 {margin-top:0px;}
+p{font-size: 16px;}
+body{font-family: $open; background-color: $f9;}
+ul{list-style-type: none; padding-left:0;}
+a:hover {text-decoration: none; opacity: .7;}
+
+.center-block {@include center-block();}
+
+.scroll-up {
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  bottom: 15px;
+  right: 100px;
+  display: none;
+  text-indent: -9999px;
+  @include sec-bgimage('arrow.png');
+  background-size: 80%; background-position: top center;
+  z-index: 100;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  visibility:hidden;
+  background-color: $blue;
+
+  @include bp(tb) { left: 30px;visibility:visible; }
+  @include bp(sm) { left: 15px; }
+}
+.ft-block.menu li {margin-bottom: 10px;}
+
+.full {@include sec-default(); padding: $sec-pad;}
+.wrap {width: 90%; @include center-block();}
+.wrap-less {width: 85%; @include center-block();}
+
+.breadcrumb {text-transform: capitalize; margin-top:0; color: $gray; background-color: transparent;}
+
+.site-footer { @include sec-default(); background-color: white; padding-top: 20px;
+  h4 {font-weight: bold; color: $dk-blue; font-size: 18px; letter-spacing: 1px;}
+  p.ft-phone{font-weight: bold;}
+  .inner-ft {width:85%; @include center-block();}
+  .ft-final {@include sec-default();}
+  .ft-block {@include grid3(); padding: 10px 15px;
+    &.menu {margin-left:5%; }
+    &.menu, &.contact{width: 25%; }
+    &.cancel{float: right; width: 45%; padding:10px 0; }
+
+    li.ft-only {display: none;}
+    li.ft-only.mfl {display: block; }
+  }
+
+  .copy {@include sec-default(); text-align: center; padding: 5px 0; background-color: $dk-blue; margin-bottom: 0; color: white;}
+
+  @include bp(tb) {
+    text-align: center;
+    .inner-ft {width: 92%;}
+    .ft-block {padding: 10px 0px;
+      &.contact, &.menu {width: 20%; margin: 0 2% 0 0;}
+      &.contact {width: 30%;}
+      &.cancel { width: 45%; margin:0;}
+
+      p{font-size: 15px;}
+    }
+  }
+
+  @include bp(tn) {
+    .ft-block{
+      &.menu {display: none;}
+      &.contact{width: 38%; margin-right: 0;}
+      &.cancel {width: 60%;}
+    }
+    p{font-size:15px;}
+  }
+
+  @include bp(tn) {
+    .ft-block{
+      &.contact, &.cancel {width:95%; @include center-block();
+        h4 {margin-bottom: 0;}
+        p {margin: 5px 0;}
+      }
+      // &.cancel {width: 95%; @include center-block();}
+    }
+  }
+}
+
+.msg-bx {@include sec-default();
+  .alert {width: 85%; @include center-block(); margin-top: 20px;}
+}
+.panel-danger.err{width: 85%; @include center-block();}
+
+// FOR DEVISE
+.registrations, .sessions, .passwords, .confirmations {
+  .new, .edit {
+    .full{padding-top:20px;}
+  }
+}
+
+
+.states, .towns, .clinics, .locations, .chatrooms, .conversations, .users, .personal_messages {
+  hr.title-line {width:15%; border-top: 3px solid $blue; margin-bottom:30px;}
+  .cancel-link {font-weight: bold; text-align: center; margin-left: 20px; }
+  .btn-add, .back-link {float: right; font-size: 14px; color: white; background-color: $dark; padding: 5px 15px 6px; text-align: center; border-radius: 4px;
+    &.inline {margin-left: 10px; }
+    &:hover {opacity: .7; }
+  }
+  .btn-danger {display: inline-block; float: right; padding: 5px 15px; margin-left:10px;}
+  h1 {font-size: 2.2em;
+    span{font-weight: bold;}
+  }
+
+  .shared-text {width: 60%; font-size: 15px; font-weight: bold;
+    a, span {color: $blue;}
+  }
+  .add-btns-blk {width:75%; @include center-block();}
+}
+.all-states, .all-clinics {@include sec-default(); padding: $sec-pad;
+  .state-name {font-weight: bold; }
+  .state-name a {text-transform: capitalize;}
+  td.actions{float: right; margin-left: 20px; margin-top: 3px;}
+
+  .top {@include sec-default();}
+}
+
+.all-towns h4.state-name{text-transform: capitalize;}
+.towns.show h4 {line-height: .8em;}
+
+
+.towns .wrap.clinics{@include sec-default(); padding:50px 0; text-align: center;}
+.clinic-bx {display: inline-block; width:30%;
+  h4 {font-weight: bold; line-height: 1.5em; font-size: 18px; text-transform: capitalize;}
+}
+.townlisting-bx {@include sec-default(); margin-bottom: 25px;
+  h4 {font-weight: bold; line-height: 1.5em; font-size: 18px; text-transform: capitalize; margin-bottom:5px;}
+}
+
+@include bp(md) {
+  .clinic-bx {width: 75%; @include center-block();}
+}
+
+.location-map{
+  p{margin-bottom: 5px;}
+  .actions { a{font-weight: bold; color: blue;}}
+}
+
+.btn.btn-outline-secondary.search {background-color: $blue; color: white;}
+
+.locations.new, .locations.update{
+  .state-form, .location-import {display: inline-block; width: 40%;}
+  .state-form {margin-left: 10%;}
+  .location-import {float: right;}
+  .forminfo {margin-bottom: 20px;}
+}
+
+
+/*************CONVERSATIONS****************************/
+  .conv { margin-bottom:20px;
+    p {margin-bottom: 5px;}
+    .view-link {font-weight: bold; color: $blue;}
+  }
+
+  #conversation-main, .new_personal_message {
+    form {padding-left: 15px;}
+    textarea {width: 50%; height:150px; margin-bottom: 10px; padding:15px;}
+    small {font-size: 11px; color: red;}
+    p {margin-bottom: 5px;}
+  }
+
+  #conversation-body {
+    height: 21em;
+    overflow-y: auto;
+    margin-bottom: 2em;
+    padding: 30px;
+    border: 1px solid #eaeaea;
+    position: relative;
+    background-color: white;
+
+    .pmsg {margin-bottom: 30px;}
+  }
+
+  .users-ul li {margin-bottom:10px;}
+
+  #notification {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: red;
+    z-index: 999;
+    // background-color: #fff;
+    .close {cursor: pointer}
+  }
+
+  .online_status {
+    color: red;
+    &.online {
+      color: green;
+    }
+  }
+
+
+/*************CHATROOMS****************************/
+
+.notes-list {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.note-sent {
+  position: relative;
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+  border-radius:4px;
+}
+
+.note-received {
+  background-color: $f2;
+  border-color: $gray;
+  margin: 5px 20px;
+  padding: 14px;
+  float: left;
+  border-radius:4px;
+}
+
+.note-msg small.stamp {color: red; font-size: 10px;}
+
+.pers-chat .panel-default {
+  width: 275px;
+  min-height: 30px;
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
+  z-index: 100;
+  margin-bottom: 0;
+
+  .panel-body{padding: 5px;}
+
+  a {color: white;}
+  .chat-icon {width: 20px; height:auto; margin-right: 3px; margin-bottom: 3px;}
+
+  .panel-heading {background-color: darken($blue, 25%);text-align: center;color:white;padding: 5px 6px;
+    &:hover a {color: rgba(white, .7);}
+  }
+  .btn.exp {font-weight: bold; margin-left: 25px;}
+  .btn.pull-right {margin-right: 5px; font-weight: bold;}
+
+  .tab-link {color: black; float: right; font-weight: bold; margin-top: 20px;
+    &:hover {opacity: .7;}
+  }
+
+  &.panel-success {
+    .panel-heading {background-color: #dff0d8; }
+    a {color: $dark; }
+  }
+
+}
+
+
+span.off, span.on {width: 6px; height: 6px; border-radius: 50%; display: inline-block; background-color: green; vertical-align: middle; margin-left: 2px;}
+span.off {background-color: red;}
+
+.new_note {margin-top:15px; }
+input.btn.btn-success {margin-top:8px;}
+
+// .live-chat {
+//   width: 300px;
+//   height: 30px;
+//   position: fixed;
+//   bottom: 0px;
+//   right: 15px;
+//   z-index: 99;
+//   text-align: center;
+//   background-color: darken($blue, 50%);
+//   color:white;
+//   border-radius: 4px;
+//   padding: 6px 0 10px;
+//   .chat-icon {width: 25px; height:auto; margin-right: 5px; }
+//   a {color: white; }
+// }
+
+
+.chatroom-window .panel-default {
+  margin-bottom: 0;
+
+  .panel-body{padding: 5px;}
+
+  a {color: white;}
+  .chat-icon {width: 20px; height:auto; margin-right: 3px; margin-bottom: 3px;}
+
+  .panel-heading {background-color: darken($blue, 35%);text-align: center;color:white;padding: 5px 6px; border:none;
+    &:hover a {color: rgba(white, .7);}
+  }
+  .btn.exp {font-weight: bold; margin-left: 25px;}
+  .btn.pull-right {margin-right: 5px; font-weight: bold;}
+
+  .tab-link {color: black; float: right; font-weight: bold; margin-top: 20px;
+    &:hover {opacity: .7;}
+  }
+
+  &.panel-success {
+    .panel-heading {background-color: #dff0d8; }
+    a {color: $dark; }
+  }
+
+  &.open-success {
+    .panel-heading {background-color: #45CCFF; }
+    a {color: $dark; }
+  }
+}
+
+.general .chatroom-window {
+  .panel-default {
+    width: 300px;
+    min-height: 30px;
+    position: fixed;
+    bottom: 0px;
+    right: 15px;
+    z-index: 100;
+  }
+}
+
+.admin-view #chatrooms-list {width: 100%; position: fixed; bottom: 0; z-index: 101; margin-bottom: 0;
+  .chatroom-window {
+    width: 300px;
+    min-height: 30px;
+    position: relative;
+    z-index: 102;
+    display: inline-block;
+  }
+}
+
+.panel.lc {
+  .panel-body{display:none}
+}
+
+.livechat .panel-primary.lc, .live-chat.customer {
+  width: 300px;
+  margin-bottom: 0;
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  z-index: 99;
+  text-align: center;
+  background-color: darken($blue, 50%);
+  border: 1px solid rgba(black, .2);
+  color:white;
+  border-radius: 4px;
+  padding: 6px 0 4px;
+  a {color: white;}
+  .chat-icon {width: 25px; height:auto; margin-right: 5px; }
+  .panel-heading{ background-color: transparent;color:white;padding: 1px 6px 7px; border:none; margin-bottom: 0; }
+  .panel-title {font-size: 15px;}
+  .panel-body{background-color: white;}
+
+  .lc-btns {display: inline-block; background-color: $blue; font-weight: bold; padding: 5px 15px; background-color: $purple;
+    &.login {background-color: $fun; margin-right: 5px;}
+  }
+}
+
+.live-chat.customer {border: 1px solid rgba($blue, .5); width:250px; right:15px; font-size: 15px; }

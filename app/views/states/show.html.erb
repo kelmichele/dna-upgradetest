@@ -1,0 +1,72 @@
+<% @page_title = @state.name.capitalize %>
+<% @page_description = "Get DNA Tested Today provides affordable, reliable, non-invasive DNA/Paternity Testing all over the US. Use the map below to find a location near you." %>
+
+<div class="all-towns">
+
+	<div class="full top">
+		<div class="inner">
+			<div class="one">
+			  <h1>Get DNA Tested Today in <span><%= @state.name %></span></h1>
+				<p>Get DNA Tested Today offers DNA &amp; Paternity testing options that are non-invasive, affordable, and 99.99% accurate. Your privacy is our guarantee.</p>
+				<!-- <%= render 'shared/add_btns' %>  -->
+			</div>
+
+			<div class="two">
+				<p>Follow the link below to learn more about each of our DNA/Paternity testing options, and schedule your testing appointment online. </p>
+				<div class="clearfix"></div>
+				<div class="test-row"><%= link_to "Learn More", testing_path, class: 'tests' %></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="full pop">
+		<div class="one">
+		  <h1>Get DNA Tested Today in <span><%= @state.name %></span></h1>
+			<p>Get DNA Tested Today offers DNA &amp; Paternity testing options that are non-invasive, affordable, and 99.99% accurate. Your privacy is our guarantee.</p>
+			<!-- <%= render 'shared/add_btns' %>  -->
+		</div>
+
+		<div class="location-map">
+  		<% if @state_towns.count != 0 %>
+
+  			<div class="map-hlf">
+					<%= render 'shared/map' %>
+	  		</div>
+
+	  		<div class="town-hlf">
+	  			<div class="search-sec">
+						<div class="searcher">
+							<%= form_with(url: locations_path, class: "form-inline", local: true, method: :get) do |f| %>
+							  <%= f.text_field :near, class: "form-control", placeholder: "Search" %>
+							  <%= f.submit "", class: "btn btn-outline-secondary search" %>
+							<% end %>
+						</div>
+					</div>
+
+					<div class="loclist">
+						<table class="listing">
+							<% @state_towns.each do |town| %>
+								<tr>
+									<% if user_signed_in? && current_user.admin? %>
+									  <!-- <td><h4 class="state-name"><%= link_to town.townname.capitalize %></h4></td> -->
+									  <td><h4 class="state-name"><%= link_to town.townname.capitalize, town_path(town) %></h4></td>
+								    <td><p><small>&nbsp;<b><%= town.id %></b> - (<%= town.locations.count %>)</small></p></td>
+							   	<% else %>
+								   	<td><h4 class="state-name"><%= link_to town.townname.capitalize, town_path(town) %></h4></td>
+							   	<% end %>
+							  </tr>
+				  		<% end %>
+						</table>
+					</div>
+				</div>
+
+  		<% else %>
+			 	<p class="zero">Unfortunately, we have no testing locations in <%= @state.name %>. <b><%= link_to "Click here", new_charge_path %></b> to order an At Home DNA Test Kit!</p>
+			<% end %>
+		</div>
+
+		<!-- <div class="wrap">
+			<%= link_to("Back to States", states_path, :class => 'back-link') %>
+		</div> -->
+	</div>
+</div>

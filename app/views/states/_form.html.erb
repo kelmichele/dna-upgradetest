@@ -1,0 +1,32 @@
+<%= render 'shared/errors', obj: @state %>
+
+<div class="state-form">
+  <%= form_for(@state, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <div class="form-group">
+      <div class="control-label col-md-1">
+        <%= f.label :name %>
+      </div>
+
+      <div class="col-md-5">
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter state", autofocus: true %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label col-md-1">
+        <%= f.label :abv %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.text_field :abv, class: "form-control", placeholder: "State Abbreviation", autofocus: true %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <%= f.submit(@state.new_record? ? "Add state" : "Update state", class: "btn btn-primary") %>
+        <%= link_to "Cancel", states_path, class: 'cancel-link' %>
+      </div>
+    </div>
+  <% end %>
+</div>

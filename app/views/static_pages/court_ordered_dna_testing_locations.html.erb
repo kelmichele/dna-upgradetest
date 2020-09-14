@@ -1,0 +1,69 @@
+<% @page_title = "Court Ordered DNA & Paternity Testing Locations" %>
+<% @page_description = "Get DNA Tested Today provides affordable, reliable, non-invasive DNA/Paternity Testing all over the US. Select a state from the list below to find a location near you." %>
+
+<div class="all-states">
+	<div class="top">
+		<div class="inner">
+			<div class="one">
+				<h1><%= @page_title %></h1>
+				<p>Get DNA Tested Today provides affordable DNA/Paternity Testing in over 2500 locations nationwide.
+				Each of our locations are certified and accredited by the AABB and ISO 17025.</p>
+			</div>
+
+			<div class="two">
+				<%= image_tag('flat-map.png', alt: 'Get DNA Tested Today, locations by state, map photo') %>
+			</div>
+
+			<div class="add-btns-blk">
+				<!-- <%= render 'shared/add_btns' %>  -->
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="newlist">
+		<h2>Choose a state from the list below to find a location near you.</h2>
+		<div class="states-dd">
+			<div class="dropdown">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Select a State <i class="fa fa-angle-down"></i>
+			  </button>
+
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<% for state in @states %>
+					 	<%= link_to state_path(state), class: 'dropdown-item' do %>
+					 		<%= image_tag("seals/#{state.name.upcase}.png", class: 'state-icons', alt: 'Get DNA Tested Today - state icons') %>
+							<%= state.name %>
+					 	<% end %>
+				  <% end %>
+
+			  </div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="opt-block">
+		<div class="inner">
+			<div class="two"><%= image_tag('test-icon.png', alt: 'Get DNA Tested Today, painless swab DNA testing') %></div>
+			<div class="one">
+				<p>Follow the link below to learn more about each of our DNA/Paternity testing options, and schedule your testing appointment online. </p>
+				<div class="clearfix"></div>
+				<div class="test-row"><%= link_to "Learn More", options_path, class: 'tests' %></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="call-block">
+		<div class="inner">
+			<h3>If you have any questions, or would like to speak to a certified collector, give us a call:<br> <span><a href="tel:18667504773" id="number_link" onclick="ga('send', 'event', 'Phone Number', 'Clicked to Call', 'Number on Website', '1');">1(866) 750-4773</a></span></h3>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- state26 = State.create(name: "Nebraska", abv: "NE") -->
+<!-- .each do |state|  -->
+<!-- for state in @cols_one  -->

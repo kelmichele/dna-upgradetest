@@ -1,0 +1,150 @@
+@mixin center-block() {
+  float:none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin sec-default() {
+  width: 100%;
+  float: left;
+  display: block;
+}
+
+@mixin sec-grid($float, $size) {
+  display: inline-block;
+  width: $size;
+  float: $float;
+}
+
+@mixin grid2() {
+  display: inline-block;
+  width: 49.5%;
+  float: left;
+}
+
+@mixin grid3() {
+  display: inline-block;
+  width: 32%;
+  float: left;
+}
+
+@mixin sec-bgimage ($img) {
+  background-image: url(image_path($img));
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 100%;
+}
+
+@mixin ease() {
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  transition: 0.1s;
+}
+
+@mixin link($size, $color) {
+  width: $size; padding: 10px 15px; text-align: center;
+  font-size: 16px; color: $color; border: 1px solid $color;
+  font-weight: bold; @include center-block();
+
+  &:hover {text-decoration: none; @include ease(); opacity: .7;}
+}
+
+@mixin tshadowl($glow) {
+  text-shadow: 0px 1px 1px $glow;
+}
+
+@mixin grayscale() {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all .1s ease;
+  transition: all .1s ease;
+}
+
+@mixin before() {
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height:100%;
+  z-index: -1;
+}
+
+@mixin purple-btn($size) {
+  width: $size; padding: 10px 15px 12px; text-align: center;
+  background: -webkit-linear-gradient(-102deg, darken($purple, 15%) 19%, lighten($plum, 8%) 81%);
+  background: linear-gradient(12deg, darken($purple, 15%) 19%, lighten($plum, 8%) 81%);
+  color: white; font-weight: bold; font-size: 17px; text-shadow: 0px 1px 1px rgba(black, .3);
+  border-radius: 20px; border-width:0px;
+}
+
+@mixin gradient($color1, $color2) {
+ background: -webkit-linear-gradient(-102deg, $color1 19%, $color2 81%);
+ background: linear-gradient(12deg, $color1 19%, $color2 81%);
+}
+
+@mixin text-gradient($dir, $from, $to) {
+  background: -webkit-linear-gradient($dir, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin bp($point) {
+  @if $point == su {
+    @media (min-width: 1440px) { @content ; }
+  }
+
+  @else if $point == dt {
+    @media (min-width: 1200px) { @content ; }
+  }
+
+  @else if $point == xl {
+    @media (min-width: 1025px) { @content ; }
+  }
+
+  @else if $point == lg {
+    @media (min-width: 768px) { @content ; }
+  }
+
+  @else if $point == tb {
+    @media (max-width: 1025px)  { @content ; }
+  }
+
+  @else if $point == nn {
+    @media (max-width: 992px)  { @content ; }
+  }
+
+  @else if $point == tn {
+    @media (max-width: 823px) { @content ; }
+  }
+
+  @else if $point == md {
+    @media (max-width: 768px)  { @content ; }
+  }
+
+  @else if $point == pl {
+    @media (max-width: 737px)  { @content ; }
+  }
+
+  @else if $point == mb {
+    @media (max-width: 670px)  { @content ; }
+  }
+
+  @else if $point == ph {
+    @media (max-width: 570px)  { @content ; }
+  }
+
+  @else if $point == sm {
+    @media (max-width: 420px)  { @content ; }
+  }
+
+  @else if $point == xs {
+    @media (max-width: 376px)  { @content ; }
+  }
+
+  @else if $point == xx {
+    @media (max-width: 320px)  { @content ; }
+  }
+}
+

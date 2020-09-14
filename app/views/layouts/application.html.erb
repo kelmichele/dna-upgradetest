@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <%= favicon_link_tag 'favicon.png' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/css/uikit.min.css" />
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit-icons.min.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-73135688-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <script type="text/javascript">
+    window.$zopim||(function(d,s){var z=$zopim=function(c){
+    z._.push(c)},$=z.s=
+    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+    _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+    $.src='//v2.zopim.com/?43gnwRMtGWve8ndd0GPyWjkKF8z8Hc47';z.t=+new Date;$.
+    type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+    </script>
+
+    <script type="text/javascript">
+    (function(a,e,c,f,g,h,b,d){var k={ak:"930056379",cl:"sPrtCJjEvWoQu5G-uwM",autoreplace:"1(866) 750 4773"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[g]||(a[g]=k.ak);b=e.createElement(h);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(h)[0];d.parentNode.insertBefore(b,d);a[f]=function(b,d,e){a[c](2,b,k,d,null,new Date,e)};a[f]()})(window,document,"_googWcmImpl","_googWcmGet","_googWcmAk","script");
+    </script>
+
+    <!-- Google Call Conversion Code -->
+    <!-- <script type="text/javascript">
+    (function(a,e,c,f,g,h,b,d){var k={ak:"930056379",cl:"sPrtCJjEvWoQu5G-uwM"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[g]||(a[g]=k.ak);b=e.createElement(h);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(h)[0];d.parentNode.insertBefore(b,d);a[f]=function(b,d,e){a[c](2,b,k,d,null,new Date,e)};a[f]()})(window,document,"_googWcmImpl","_googWcmGet","_googWcmAk","script");
+    </script> -->
+
+    <script type="text/javascript">
+      var callback = function(formatted_number, mobile_number) {
+        // formatted_number: number to display, in the same format as
+        //        the number passed to _googWcmGet().
+        //        (in this case, '1-800-123-4567')
+        // mobile_number: number formatted for use in a clickable link
+        //        with tel:-URI (in this case, '+18001234567')
+        var e = document.getElementById("number_link");
+        e.href = "tel:" + mobile_number;
+        e.innerHTML = "";
+        e.appendChild(document.createTextNode(formatted_number));
+      };
+    </script>
+  </head>
+
+  <body class=" <%= controller_name %> <%= action_name %> <% if user_signed_in? && current_user.admin? %>admin-view <% else %> general<% end %>" onload="_googWcmGet(callback, '1-866-750-4773')">
+    <%= render 'layouts/header' %>
+      <!-- <ol class="breadcrumb"><%= render_breadcrumbs :tag => :li, :separator => '  '%></ol> -->
+      <%= render 'layouts/messages' %>
+
+		  <div class="pg-body">
+        <%= yield %>
+      </div>
+
+    <!-- < render chat_or_account_path >  -->
+	  <%= render 'layouts/footer' %>
+  </body>
+</html>

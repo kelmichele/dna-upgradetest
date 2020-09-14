@@ -1,0 +1,29 @@
+<div class="admin-bar">
+	<div class="avail">
+		<p><%= admin_online_status boss_admin %> Available for Customer Support</p>
+
+	</div>
+
+	<div class='admenu' id ='chatrooms-menu'>
+	  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	    <i class="fa fa-envelope-o" aria-hidden="true">
+	      <span id="unseen-chatrooms"></span>
+	    </i>
+	  </a>
+
+	  <ul class="dropdown dropdown-menu" role="menu">
+	  	<p>Current Chat Windows</p>
+	  	<hr>
+      <% active_users.each do |user| %>
+	      <% if user.notes.count > 0 %>
+	        <li class="awaits ">
+	        	<%= link_to chatrooms_path(user_id: user), remote: true, method: :post do %>
+		          Support Window: <%= user.id %>
+	        	<% end %>
+	      	</li>
+	      <% end %>
+      <% end %>
+	  </ul>
+
+	</div>
+</div>

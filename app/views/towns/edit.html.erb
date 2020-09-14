@@ -1,0 +1,11 @@
+<% @page_title = "Edit #{@town.townname}" %>
+
+<div class="full">
+	<div class="wrap">
+		<h1><%= @page_title %></h1>
+		<%= render 'form' %>
+        <%= link_to "Delete This City", town_path(@town), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-danger" %>
+		<%= link_to("Cancel", town_path(@town), :class => 'back-link inline') %>
+		<%= link_to("Back to #{@state.name}", state_path(@state), :class => 'back-link inline') %>
+	</div>
+</div>

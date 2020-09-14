@@ -1,0 +1,38 @@
+<li class="chatroom-window" id="<%= chatroom.id %>" >
+  <div class="panel panel-default" data-chatroom-id="<%= chatroom.id %>">
+    <div class="panel-heading">
+
+      <%= link_to chatroom.opposed_user(user).email, class: 'toggle-window' do %>
+        <%= image_tag('chat.png', class:'chat-icon') %>
+        <span class="name-notif">
+          <!-- Customer Support Chat -->
+          <!-- Support Ticket <%= chatroom.opposed_user(user).id %> -->
+          Support Window: <%= chatroom.sender_id %>
+        </span>
+        <!-- <span class="ofc-online"><b>Online</b> - Chat with us</span> -->
+
+        <div class="btn btn-xs exp">—</div>
+      <% end %>
+
+        <%= link_to "X", close_chatroom_path(chatroom), class: "btn btn-xs pull-right", remote: true, method: :post %>
+        <!-- <%= link_to "X", close_chatroom_path(chatroom), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-xs pull-right" %>  -->
+    </div>
+
+    <div class="panel-body" style="display: none;">
+      <div class="notes-list">
+        <ul>
+          <%= render 'chatrooms/chatroom_content', notes: chatroom.notes, user: user %>
+        </ul>
+      </div>
+
+      <form class="new_note">
+        <input name="chatroom_id" type="hidden" value="<%= chatroom.id %>">
+        <input name="user_id" type="hidden" value="<%= user.id %>">
+        <textarea name="body" class="form-control" autofocus= "true"></textarea>
+        <input type="submit" class="btn btn-success" value="Send">
+        <!-- <%= link_to 'Open in New Tab', chats_path, class: 'tab-link' %>  -->
+      </form>
+
+    </div>
+  </div>
+</li>

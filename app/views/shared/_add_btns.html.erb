@@ -1,0 +1,13 @@
+<% if user_signed_in? && current_user.admin? %>
+	<%= link_to("Add New Location", new_location_path, :class => 'action new btn-add inline') %>
+	<% if controller_name == 'states' %><%= link_to("Add New City", new_town_path, :class => 'action new btn-add inline') %><% end %>
+	<% if controller_name == 'towns' %><%= link_to("Back to #{@state.name}", state_path(@state), :class => 'back-link' ) %><% end %>
+
+	<%= tag.h4 "Import Locations", class: 'tmargin0 bmargin5' %>
+	<%= form_tag import_locations_path, multipart: true do %>
+	  <%= file_field_tag :file, class: 'bmargin5' %>
+	  <%= tag.div class: 'clearfix' %>
+	  <%= submit_tag "Import" %>
+	<% end %>
+<% end %>
+

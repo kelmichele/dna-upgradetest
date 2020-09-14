@@ -1,0 +1,59 @@
+<% @page_title = "Home" %>
+<% @page_description = "Get DNA Tested Today provides affordable, reliable, non-invasive DNA/Paternity Testing in over 2500 locations nationwide." %>
+<!-- https://stock.adobe.com/search?serie_id=102483434&load_type=see_more&prev_url=detail -->
+<!-- https://stock.adobe.com/search?serie_id=170572779&load_type=see_more&prev_url=detail -->
+
+<div class="hero-home">
+	<div class="wrap">
+		<h1>Get DNA Tested Today</h1>
+		<h2>Easy as swab, 2, 3...</h2>
+		<h3>Call Us Today: <br><a href="tel:18667504773" id="number_link" onclick="ga('send', 'event', 'Phone Number', 'Clicked to Call', 'Number on Website', '1');"> 1(866) 750-4773</a></h3>
+	</div>
+</div>
+
+<div class="dna">
+	<div class="inner">
+		<div class="right">
+			<h3>Get DNA Tested Today provides fast, accurate, &amp; reliable DNA/Paternity Testing.<br> <b>Over 2,445 accredited locations nationwide!</b></h3>
+			<%= link_to "Find One Near You", states_path, class: 'link-a' %>
+		</div>
+	</div>
+</div>
+
+<div class="legal-lt">
+	<div class="inner">
+		<div class="left">
+			<h2><span>Legal &amp; Non-Legal</span><br> DNA &amp; Paternity Testing Options</h2>
+			<p>All samples are taken by gently rubbing a soft swab on the inside of the cheek, so testing is painless and non-invasive.</p>
+			<%= link_to "Testing Options", options_path, class: 'link-a' %>
+		</div>
+
+		<div class="right">
+			<%= image_tag('crazy-chromes.png', alt: 'Get DNA Tested Today: genetic markers image', class: 'img-responsive') %>
+		</div>
+	</div>
+</div>
+
+<div class="call-block">
+	<div class="inner">
+		<h3>Please call us, toll-free, if you have any questions, <br class="uno">or would like to schedule a DNA/Paternity Test:<br>
+		<!-- <%= phone %> -->
+	  <a href="tel:18667504773" id="number_link" onclick="ga('send', 'event', 'Phone Number', 'Clicked to Call', 'Number on Website', '1');">1(866) 750-4773</a>
+	</h3>
+	</div>
+</div>
+
+<div class="homekit">
+	<div class="inner">
+		<div class="left">
+			<%= image_tag('test-kit-slide.png', alt: 'Get DNA Tested Today: genetic markers image', class: 'img-responsive') %>
+		</div>
+
+		<div class="right">
+			<h2>Home Testing Kit</h2>
+			<p>Our Home Testing Kit allows you to perform paternity testing in the comfort and privacy of your home, with 99.9% accuracy. One low price includes everything you need: testing kit, shipping, and results.</p>
+			<%= link_to "More Details", new_charge_path, class: 'link-a' %>
+		</div>
+	</div>
+</div>
+

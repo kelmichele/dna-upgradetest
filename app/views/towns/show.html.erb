@@ -1,0 +1,55 @@
+<% @page_title = "Dna Testing in #{@town.townname} #{@state.abv}" %>
+
+<div class="all-towns">
+
+	<div class="full pop">
+		<div class="one">
+	  	<h1>Get DNA Tested Today in <span><%= @town.townname %>, <%= @state.abv %></span></h1>
+			<p>Get DNA Tested Today offers DNA &amp; Paternity testing options that are non-invasive, affordable, and 99.99% accurate. Your privacy is our guarantee.</p>
+		</div>
+
+		<div class="location-map">
+			<div class="map-hlf">
+				<%= render 'shared/map' %>
+			</div>
+
+  		<div class="town-hlf">
+  			<div class="search-sec">
+  				<div class="searcher">
+  					<%= form_with(url: locations_path, class: "form-inline", local: true, method: :get) do |f| %>
+  					  <%= f.text_field :near, class: "form-control", placeholder: "Search" %>
+  					  <%= f.submit "", class: "btn btn-outline-secondary search" %>
+  					<% end %>
+  				</div>
+  			</div>
+
+				<div class="loclist">
+					<% if @town_locations.count != 0 %>
+						<table class="locations">
+							<% @town_locations.each do |location| %>
+								<div class="townlisting-bx">
+									<h4>
+										<%= location.street.titleize %><br>
+										<% if location.addr2 %><%= location.addr2.titleize %><br><% end %>
+										<%= location.town.townname %>, <%= location.state.abv %> <%= location.zip %>
+										<br>
+										<a href="tel:18667504773" id="number_link" onclick="ga('send', 'event', 'Phone Number', 'Clicked to Call', 'Number on Website', '1');">1(866) 750-4773</a>
+									</h4>
+
+
+									<% if user_signed_in? && current_user.admin? %>
+					  				<% if location.longitude == nil %>**<small>Coordinates Missing**</small><% end %>
+										<div class="actions"><small><%= link_to("Edit Location", edit_location_path(location)) %></small></div>
+									<% end %>
+								</div>
+				  		<% end %>
+						</table>
+						<% else %>
+						<p>Locations are still being added. Please check back shortly!</p>
+					<% end %>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

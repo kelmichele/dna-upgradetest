@@ -1,0 +1,41 @@
+ <!-- <% if user_signed_in? && current_user.admin? %> -->
+ 	<!-- <%= render 'layouts/admin_bar' %> -->
+ <!-- <% end %> -->
+
+<div class="header-wrapper">
+	<div class="top">
+    <div class="wrap">
+    	<div class="logo-block"><%= link_to(image_tag( 'dna-logo.png', alt: 'Get DNA Tested Today logo', class: 'img-responsive logo'), root_path ) %></div>
+    	<div class="call-block">
+    		<i class="fa fa-phone"></i>
+				<p>Call Us Today!</p>
+				<!-- <h4><%= phone %></h4> -->
+			  <a href="tel:18667504773" id="number_link" onclick="ga('send', 'event', 'Phone Number', 'Clicked to Call', 'Number on Website', '1');"><h4>1 (866)-750-4773</h4></a>
+    	</div>
+		</div>
+	</div>
+
+	<!-- <div id="nav" class="stick full"> -->
+	<div class="full">
+		<header class="site-header" role="banner">
+			<div class="wrap">
+				<ul class="mainu megamenu-parent menu-zoom hidden-xs">
+			    <%= render 'layouts/nav' %>
+				</ul>
+
+				<div class="add-menu">
+					<%= link_to 'Home Kit', new_charge_path, class: 'add-link homekit' %>
+				</div>
+			</div>
+		</header>
+	</div>
+
+	<div>
+    <a href="#" id="offcanvas-toggler">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+  </div>
+</div>
+<div class="clearfix"></div>

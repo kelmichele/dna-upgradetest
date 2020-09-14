@@ -1,0 +1,10 @@
+<% @page_title = "Edit #{@state.name.capitalize}" %>
+
+<div class="full">
+	<div class="wrap">
+		<h1><%= @page_title %></h1>
+		<%= render 'form' %>
+		<%= link_to("Back to States", states_path, :class => 'back-link inline') %>
+		<%= link_to("Back to #{@state.name}", state_path(@state), :class => 'back-link inline') %>
+	</div>
+</div>
